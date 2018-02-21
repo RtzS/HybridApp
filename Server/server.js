@@ -8,6 +8,7 @@ var url = "mongodb://localhost:27017/reactDB";
 app.use(bodyParser.json());
 app.route('/employeeList').get(function(req, res) {
     if (mongodb != null && mongodb != undefined) {
+        var reObject = {};
         var collection = mongodb.collection('EmpList');
         var cursor = collection.find({});
         cursor.forEach(function(item) {
@@ -17,7 +18,7 @@ app.route('/employeeList').get(function(req, res) {
         }, function(err) {
             res.send(employees);
             res.json(employees);
-            db.close();
+            res.writeHead(200, { 'Content-Type': 'text/event-stream' });
         });
     }
 });
@@ -35,7 +36,7 @@ app.post('/employeeList', function(req, res) {
             } else {
                 resultObject.status = "Success";
                 resultObject.statusCode = 200;
-                resultObject.message = "Create new record success";
+                resultObject.message = "success in Creating new record";
                 res.send(JSON.stringify(resultObject));
             }
         });

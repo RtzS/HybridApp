@@ -9,3 +9,11 @@
     <p>Essential App</p>
 
 </ion-content>
+<ion-content padding>
+    <ion-list>
+        <ion-item *ngFor="let c of dataList">
+            <h4>{{c.Employee_Id}}</h4>
+            <h4>{{c.Emp_Name}}</h4>
+        </ion-item>
+    </ion-list>
+</ion-content>
