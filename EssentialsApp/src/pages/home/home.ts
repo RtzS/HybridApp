@@ -23,9 +23,8 @@ export class HomePage {
   getData() {
     this.rest.getData()
        .subscribe(
-        data => { 
-	      console.log("data"+data);
-	  });
+         dataList => this.dataList = dataList,
+         error =>  this.errorMessage = <any>error);
   }
 
 }
