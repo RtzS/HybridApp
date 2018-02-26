@@ -3,10 +3,7 @@
   "description": "Essential App using Ionic, react JS, Angular and nodejs",
   "main": "server.js",
   "scripts": {
-    "client-install": "cd client && npm install",
-    "start": "node server.js",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "start": "node server.js"
   },
   "author": "Rutuja",
   "license": "ISC",
@@ -15,6 +12,8 @@
     "bootstrap": "^4.0.0-alpha.6",
     "concurrently": "^3.5.1",
     "express": "^4.16.2",
+    "express-mongo-db": "^2.0.4",
+    "express-session": "^1.15.6",
     "mongodb": "^2.2.33",
     "mongoose": "^5.0.6"
   },

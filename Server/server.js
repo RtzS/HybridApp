@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const app = express();
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
@@ -6,19 +7,27 @@ var employees = [];
 var url = "mongodb://localhost:27017/reactDB";
 
 app.use(bodyParser.json());
+
+// app.get('/', function(req, res) {
+//     res.send('Page Not Found', 404);
+// });
+
 app.route('/employeeList').get(function(req, res) {
     if (mongodb != null && mongodb != undefined) {
-        var reObject = {};
-        var collection = mongodb.collection('EmpList');
-        var cursor = collection.find({});
-        cursor.forEach(function(item) {
-            if (item != null) {
-                employees.push({ Employee_Id: item.empId, Emp_Name: item.name });
+        mongodb.collection('EmpList').find({}, function(err, doc) {
+            if (err) {
+                throw err;
+            } else {
+                doc.forEach(function(item) {
+                    if (item !== null) {
+                        employees.push({ Employee_Id: item.empId, Emp_Name: item.name });
+                    }
+                }, function(err) {
+                    res.send(employees);
+                    res.status(200).send('Success')
+                    res.json(employees);
+                });
             }
-        }, function(err) {
-            res.send(employees);
-            res.json(employees);
-            res.writeHead(200, { 'Content-Type': 'text/event-stream' });
         });
     }
 });
