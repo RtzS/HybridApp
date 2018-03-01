@@ -24,4 +24,19 @@
             <p>I've had a pretty messed up day. If we just...</p>
         </ion-item>
     </ion-list>
+
+    <button ion-button full (click)="takePhoto()">
+  <ion-icon name="camera"></ion-icon>Take Photo
+  </button>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col col-6 *ngFor="let photo of photos; let id = index">
+                <ion-card class="block">
+                    <ion-icon name="trash" class="deleteIcon" (click)="deletePhoto(id)"></ion-icon>
+                    <img [src]="photo" *ngIf="photo" />
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>

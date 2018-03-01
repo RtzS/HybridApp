@@ -1,24 +1,31 @@
 const mongoose = require("mongoose");
 
 let dataSchema = mongoose.Schema({
-    "empId": {
+    "id": {
         type: Number,
         required: [true, 'Users id is required']
     },
-    "name": {
+    "firstName": {
         type: String,
         required: [true, 'Users Name is required']
+    },
+    "lastName": {
+        type: String,
+        required: [true, 'Users last name is required']
+    },
+    "designation": {
+        type: String
     }
 });
 
-let dataList = module.exports = mongoose.model('EmpList', dataSchema);
+let dataList = module.exports = mongoose.model('demoList', dataSchema);
 
 module.exports.getData = (callback, limit) => {
     dataList.find(callback).limit(limit);
 }
 
 module.exports.deleteData = (firstName, callback) => {
-    let query = { "name": firstName };
+    let query = { "firstName": firstName };
     dataList.remove(query, callback);
 }
 

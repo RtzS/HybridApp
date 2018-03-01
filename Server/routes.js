@@ -5,7 +5,7 @@ module.exports = function(app) {
     app.get('/', (req, res) => {
         res.send('Hello World')
     });
-    app.get('/employeeList', (req, res) => {
+    app.get('/demoList', (req, res) => {
         Records.getData((err, employees) => {
             if (err) {
                 console.error(err);
@@ -15,7 +15,7 @@ module.exports = function(app) {
     });
 
     //delete Employee Data
-    app.delete('/employeeList/:name', (req, res) => {
+    app.delete('/demoList/:name', (req, res) => {
         let firstName = req.params.firstName;
         Records.deleteData(firstName, (err, employee) => {
             if (err) {
@@ -26,7 +26,7 @@ module.exports = function(app) {
     });
 
     //add Employees Data
-    app.post('/employeeList', (req, res) => {
+    app.post('/demoList', (req, res) => {
         var employee = req.body;
         Records.addData(employee, (err, employee) => {
             if (err) {

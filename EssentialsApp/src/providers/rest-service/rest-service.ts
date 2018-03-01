@@ -16,7 +16,7 @@ export class RestServiceProvider {
   }
   
   getData(): Observable<string[]> {
-  return this.http.get('http://localhost:5000/employeeList').map(this.extractData).catch(this.handleError);
+  return this.http.get('http://localhost:5000/api/demoList').map(this.extractData).catch(this.handleError);
 }
 
 private extractData(res: Response) {

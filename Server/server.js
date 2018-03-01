@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
 
-app.use(express.static(path.join(__dirname, '../empList')));
+//app.use(express.static(path.join(__dirname, '../../src/provider')));
 const mongoDB = database.url;
 
 //Connect to Mangoose

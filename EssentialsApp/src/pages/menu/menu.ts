@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, Nav, NavController, NavParams } from 'ionic-angular';
-import { HomePage } from '../home/home';
-import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
+// import { HomePage } from '../home/home';
+// import { AboutPage } from '../about/about';
+// import { ContactPage } from '../contact/contact';
 import { TabsPage } from '../tabs/tabs';
 
 export interface pageInterface{
