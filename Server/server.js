@@ -3,26 +3,20 @@ const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 var path = require('path');
 const database = require('./config/db');
-
 const app = express();
 const port = 5000;
 
-app.use(bodyParser.urlencoded({ 'extended': 'true' }));
-app.use(bodyParser.json());
-app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
-
-//app.use(express.static(path.join(__dirname, '../../src/provider')));
 const mongoDB = database.url;
+
 
 //Connect to Mangoose
 mongoose.connect(mongoDB, {});
 const db = mongoose.connection;
-
-
 db.on('connected', function() {
     console.log('Database Connected successfully');
 });
+
 
 require('./routes')(app);
 

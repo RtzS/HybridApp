@@ -1,24 +1,25 @@
 const mongoose = require("mongoose");
 
 let dataSchema = mongoose.Schema({
-    "id": {
+    "_id" : mongoose.Schema.Types.ObjectId,
+	"id": {
         type: Number,
-        required: [true, 'Users id is required']
+		required: [true, 'Users id is required']
     },
     "firstName": {
         type: String,
-        required: [true, 'Users Name is required']
+		required: [true, 'Users name is required']
     },
     "lastName": {
         type: String,
-        required: [true, 'Users last name is required']
+		required: [true, 'Users last_name is required']
     },
     "designation": {
         type: String
     }
-});
+},{ collection : 'demoList' });
 
-let dataList = module.exports = mongoose.model('demoList', dataSchema);
+let dataList = module.exports = mongoose.model('dataList', dataSchema);
 
 module.exports.getData = (callback, limit) => {
     dataList.find(callback).limit(limit);
@@ -33,22 +34,14 @@ module.exports.addData = (record, callback) => {
     dataList.create(record, callback);
 }
 
-//Update Employee
+//Update Data
 // module.exports.updateEmployeeData = (id, employee, options, callback) => {
 //     var query = { "employee_id": id };
 //     var update = {
+//	        "id" : employee["id"],
 //         "first_name": employee["first_name"],
-//         "last_name": employee["last_name"],
-//         "age": employee["age"],
-//         "sex": employee["sex"],
-//         "designation": employee["designation"],
-//         "date_of_birth": employee["date_of_birth"],
-//         "current_project": employee["current_project"],
-//         "address": employee["address"],
-//         "reporting_manager": employee["reporting_manager"],
-//         "employee_id": employee["employee_id"],
-//         "secondary_skills": employee["secondary_skills"],
-//         "primary_skills": employee["primary_skills"]
+//         "last_name": employee["last_name"],   
+//         "designation": employee["designation"]
 //     }
 //     EmployeesData.findOneAndUpdate(query, update, options, callback);
 // }

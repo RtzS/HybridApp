@@ -6,15 +6,15 @@ module.exports = function(app) {
         res.send('Hello World')
     });
     app.get('/demoList', (req, res) => {
-        Records.getData((err, employees) => {
+        Records.getData((err, data) => {
             if (err) {
                 console.error(err);
             }
-            res.json(employees);
+            res.json(data);
         });
     });
 
-    //delete Employee Data
+    //delete Data
     app.delete('/demoList/:name', (req, res) => {
         let firstName = req.params.firstName;
         Records.deleteData(firstName, (err, employee) => {
@@ -25,7 +25,7 @@ module.exports = function(app) {
         });
     });
 
-    //add Employees Data
+    //add Data
     app.post('/demoList', (req, res) => {
         var employee = req.body;
         Records.addData(employee, (err, employee) => {
@@ -36,8 +36,8 @@ module.exports = function(app) {
         });
     });
 
-    // Update Employee Data
-    // app.put('/api/employee/:id',(req,res) =>{
+    // Update Data
+    // app.put('/employee/:id',(req,res) =>{
     //     var id = req.params.id;
     //     var employee = req.body;
     //     Records.updateData(id,employee,{},(err,employee)=>{
